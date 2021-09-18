@@ -36,6 +36,4 @@ public class DeckTeste {
         System.out.println("Carta sacada: " + deck3.sacar());
     }
 
-
-
 }
