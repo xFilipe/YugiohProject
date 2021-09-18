@@ -21,8 +21,7 @@ public class DeckTeste {
     @Test
     public void addCarta(){
         Deck deck2 = new Deck();
-        Carta card = new Carta();
-        card = ct.criarCarta(1).get(0);
+        Carta card = ct.criarCarta(1).get(0);
         deck2.setDeckNome("Deck Teste");
         deck2.adicionarCarta(card);
         System.out.println(deck2);

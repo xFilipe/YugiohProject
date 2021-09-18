@@ -2,11 +2,14 @@ package com.yugioh.model;
 
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +19,10 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class Deck extends PanacheEntity {
+public class Deck extends PanacheEntityBase {
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     private String deckNome;
 

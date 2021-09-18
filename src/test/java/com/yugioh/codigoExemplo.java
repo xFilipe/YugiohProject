@@ -1,16 +1,9 @@
 package com.yugioh;
 
-import com.yugioh.model.Carta;
-import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.Test;
+public class codigoExemplo {
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
-
-@QuarkusTest
-public class GreetingResourceTest {
-
-    @Test
+    /*
+        @Test
     public void testHelloEndpoint() {
         given()
           .when().get("/hello")
@@ -27,5 +20,5 @@ public class GreetingResourceTest {
 
     }
 
-
+     */
 }
