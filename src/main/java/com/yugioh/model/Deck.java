@@ -4,6 +4,7 @@ package com.yugioh.model;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -14,6 +15,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@ToString
 public class Deck extends PanacheEntity {
 
     private String deckNome;
@@ -21,10 +23,10 @@ public class Deck extends PanacheEntity {
     @ManyToMany
     List<Carta> deckCartas = new ArrayList<Carta>(39);
 
-
-    private void criarDeck(String deckId){
-
-        // Criar lógica buscando o deck de acordo com o deckId no banco de dados.
+    public void adicionarCarta(Carta card){
+        if(deckCartas.size() <= 39){
+            deckCartas.add(card);
+        }
     }
 
     public Carta sacar(){

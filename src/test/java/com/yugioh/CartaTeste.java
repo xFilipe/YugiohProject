@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @QuarkusTest
-public class cartaTeste {
+public class CartaTeste {
 
     @Test
     public List<Carta> criarCarta(int c){
