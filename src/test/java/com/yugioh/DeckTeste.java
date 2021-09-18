@@ -28,6 +28,13 @@ public class DeckTeste {
         System.out.println(deck2);
     }
 
+    @Test
+    public void getCarta(){
+        Deck deck3 = new Deck();
+        deck3.setDeckCartas(ct.criarCarta(39));
+        System.out.println(deck3.sacar());
+    }
+
 
 
 }
