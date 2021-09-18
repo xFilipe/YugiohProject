@@ -23,11 +23,18 @@ public class Deck extends PanacheEntity {
     @ManyToMany
     List<Carta> deckCartas = new ArrayList<Carta>(39);
 
-    public void adicionarCarta(Carta card){
-        if(deckCartas.size() <= 39){
+    public boolean adicionarCarta(Carta card){
+        boolean mReturn;
+        if(deckCartas.size() < 39) {
             deckCartas.add(card);
+            mReturn = true;
+        } else {
+            mReturn = false;
         }
+        return mReturn;
     }
+
+
 
     public Carta sacar(){
         Carta c = deckCartas.get(0);
@@ -35,16 +42,8 @@ public class Deck extends PanacheEntity {
         return c;
     }
 
-    private boolean adicionarDeck(Carta c){
-        if(deckCartas.size() < 39) {
-            deckCartas.add(c);
-            return true;
-        } else {
-            return false;
-        }
-    }
 
-    private void embaralhar(){
+    public void embaralhar(){
         Collections.shuffle(deckCartas);
     }
 

@@ -2,11 +2,9 @@ package com.yugioh;
 
 
 import com.yugioh.model.Carta;
-import com.yugioh.model.Deck;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class CartaTeste {
             Carta card = new Carta();
             card.setNome("Nome " + i);
             card.setAtaque(100 + i);
-            card.setAtaque(100 - i);
+            card.setDefesa(100 - i);
             card.setDescricao("Teste" + i);
 
             cartas.add(card);

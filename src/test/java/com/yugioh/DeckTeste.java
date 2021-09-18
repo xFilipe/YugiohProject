@@ -32,7 +32,8 @@ public class DeckTeste {
     public void getCarta(){
         Deck deck3 = new Deck();
         deck3.setDeckCartas(ct.criarCarta(39));
-        System.out.println(deck3.sacar());
+        deck3.embaralhar();
+        System.out.println("Carta sacada: " + deck3.sacar());
     }
 
 
