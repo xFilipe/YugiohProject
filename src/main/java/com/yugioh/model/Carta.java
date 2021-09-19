@@ -6,17 +6,14 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
 @ToString
 public class Carta extends PanacheEntityBase {
-    @Id()
+    @Id
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -26,7 +23,7 @@ public class Carta extends PanacheEntityBase {
     private String descricao;
     private boolean status = false; // Verifica se a carta está em jogo.
     // private Efeito efeito;
-    // private Tipo tipo;
+    private String tipo;
 
 
 
