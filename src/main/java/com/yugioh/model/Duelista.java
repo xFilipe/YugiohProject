@@ -21,11 +21,21 @@ public class Duelista extends PanacheEntityBase {
 
     private String nome;
 
+    @ManyToOne
+    private Deck deckAtual = new Deck();
+
     @OneToOne
     private Inventario inventario;
 
     @ManyToMany
     private List<Carta> mao = new ArrayList<>();
+
+    private int pontuacao;
+
+    private int vitorias;
+
+    private int derrotas;
+
 
 
 }
