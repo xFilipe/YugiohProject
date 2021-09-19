@@ -18,13 +18,13 @@ public class Carta extends PanacheEntityBase {
     private Long id;
 
     private String nome;
+    private String tipoCarta;
+    private String tipo;
+    private int nivel;
     private int ataque;
     private int defesa;
-    private String descricao;
+    private int password;
+    private int preco;
     private boolean status = false; // Verifica se a carta está em jogo.
-    // private Efeito efeito;
-    private String tipo;
-
-
 
 }

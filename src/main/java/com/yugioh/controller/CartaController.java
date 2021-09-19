@@ -29,17 +29,20 @@ public class CartaController {
 
     @POST
     @Transactional
-    public Carta create(Carta card){
-        Date dt = new Date();
-        card.setId(dt.getTime());
-        System.out.println(card);
-        try{
-            card.persist();
-        } catch (Exception e){
-            e.printStackTrace();
-            System.out.println("Valor nulo ou já existente no banco");
+    public List<Carta> create(List<Carta> cards){
+        for(Carta card: cards){
+            System.out.println("Objeto recebido " + card);
+            try{
+                card.persist();
+                System.out.println("Objeto salvo " + card);
+
+            } catch (Exception e){
+                e.printStackTrace();
+                System.out.println("Valor nulo ou já existente no banco");
+            }
         }
-        return card;
+
+       return cards;
     }
 
 
