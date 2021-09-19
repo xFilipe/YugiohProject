@@ -16,16 +16,22 @@ import java.util.List;
 public class Jogo {
 
     private boolean status = false; // Verifica se o jogo está em andamento
-    private Duelista duelista1;
-    private Duelista duelista2;
-    private Duelista jogadorAtual;
-    private Arena arena;
+
     private long horaInicio;
     private long horaFim;
     private Duelista vencedor;
 
+    private Arena arena = new Arena();
+    private Duelista duelista1 = new Duelista();
+    private Duelista duelista2 = new Duelista();
+    private Duelista jogadorAtual = new Duelista();
 
-    private void comecar(Long cara, Long coroa){
+
+
+    public boolean comecar(Duelista d1, Duelista d2){
+
+        duelista1 = d1;
+        duelista2 = d2;
 
         this.status = true;
 
@@ -37,17 +43,21 @@ public class Jogo {
         arena.setPontoVida1(8000);
         arena.setPontoVida2(8000);
 
+        /*
+
         arena.getAreaMonstro1().clear();
         arena.getAreaMonstro2().clear();
 
         arena.getAreaMagia1().clear();
         arena.getAreaMagia2().clear();
 
+         */
+
 
         // Sortear
         List<Long> moeda = new ArrayList<>();
-        moeda.add(cara);
-        moeda.add(coroa);
+        moeda.add(d1.getId());
+        moeda.add(d2.getId());
         Collections.shuffle(moeda);
         long sorteado = moeda.get(0);
         trocarturno(sorteado);
@@ -56,9 +66,11 @@ public class Jogo {
         duelista1.getDeckAtual().sacar();
         duelista2.getDeckAtual().sacar();
 
+
+        return true;
     }
 
-    private void trocarturno(long id){
+    public void trocarturno(long id){
         if(id == duelista1.getId()){
             jogadorAtual = duelista2;
         } else {
@@ -66,7 +78,7 @@ public class Jogo {
         }
     }
 
-    private void encerrar(){
+    public void encerrar(){
         status = false;
         if(arena.getPontoVida1() < arena.getPontoVida2()){
             vencedor = duelista2;
