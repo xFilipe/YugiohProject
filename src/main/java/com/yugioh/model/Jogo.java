@@ -4,6 +4,7 @@ package com.yugioh.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,7 +29,7 @@ public class Jogo {
 
 
 
-    public boolean comecar(Duelista d1, Duelista d2){
+    public boolean comecar(@NotNull Duelista d1, @NotNull Duelista d2){
 
         duelista1 = d1;
         duelista2 = d2;
@@ -43,29 +44,14 @@ public class Jogo {
         arena.setPontoVida1(8000);
         arena.setPontoVida2(8000);
 
-        /*
-
-        arena.getAreaMonstro1().clear();
-        arena.getAreaMonstro2().clear();
-
-        arena.getAreaMagia1().clear();
-        arena.getAreaMagia2().clear();
-
-         */
-
 
         // Sortear
         List<Long> moeda = new ArrayList<>();
         moeda.add(d1.getId());
         moeda.add(d2.getId());
         Collections.shuffle(moeda);
-        long sorteado = moeda.get(0);
+        long sorteado = (long) moeda.get(0);
         trocarturno(sorteado);
-
-
-        duelista1.getDeckAtual().sacar();
-        duelista2.getDeckAtual().sacar();
-
 
         return true;
     }
