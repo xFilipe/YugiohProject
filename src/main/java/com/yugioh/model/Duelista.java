@@ -28,13 +28,15 @@ public class Duelista extends PanacheEntityBase {
     private Inventario inventario;
 
     @ManyToMany
-    private List<Carta> mao = new ArrayList<>();
+    private List<Carta> mao = new ArrayList<>(4);
 
     private int pontuacao;
 
     private int vitorias;
 
     private int derrotas;
+    
+    private List<String> historico = new ArrayList<>();
 
 
 
