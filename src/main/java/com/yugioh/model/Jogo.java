@@ -95,11 +95,13 @@ public class Jogo {
     }
 
 
-    // c = carta, j = id jogador, p = posicao no campo, v = virada para cima ou baixo
-    public boolean jogarCarta(Carta c, long j, String p, boolean v){
+    // c = carta, j = id jogador, p = posicao no campo, v = virada para cima ou baixo, ad = atk ou def
+    public boolean jogarCarta(Carta c, long j, String p, boolean v, String ad){
         boolean jogou; // irá impedir que mais de um monstro seja jogado.
         boolean sucesso = false; // confirma se foi possível setar a carta.
 
+
+        // Tratar seleção de modo de ataque ou defesa
 
         // Verificar possibilidade de usar o currentPlayer, a fim de evitar a repetição do código
 
@@ -176,7 +178,10 @@ public class Jogo {
 
     // Rever
     public void atacar(Carta at, Carta df){
+        int damage;
+
         if(at.getAtaque() > df.getDefesa()){
+
 
         }
 
