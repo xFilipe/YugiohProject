@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 @Getter
@@ -89,6 +90,51 @@ public class Jogo {
             } else {
                 arena.getCemiterio2().add(playerTwo.getDeckAtual().sacar());
             }
+        }
+
+    }
+    
+    
+
+
+    public void jogar(Carta c, long j, int p){ // p = posição desejada para colocar a carta
+        boolean jogou;
+
+        if (playerOne.getId() == j){
+            if (c.getTipo() == "Monster"){
+                jogou = true;
+
+
+                if(jogou == false){      // validar se há espaço no campo mudar essa lógica do jogo, coloquei só para compilar.
+                    //arena.getAreaMonstro1().add(p, c);
+                    // arena.getAreaMagia1().contains(1);
+                } else {
+
+                }
+
+
+            }else if(c.getTipo() == "Equip"){
+                // equip
+            } else {
+                // trap or magic
+            }
+        
+        
+
+        }
+
+
+
+
+    }
+
+
+
+
+    // Rever
+    public void atacar(Carta at, Carta df){
+        if(at.getAtaque() > df.getDefesa()){
+
         }
 
     }

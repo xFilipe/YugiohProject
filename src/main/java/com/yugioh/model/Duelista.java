@@ -36,7 +36,7 @@ public class Duelista extends PanacheEntityBase {
 
     private int derrotas;
     
-    private List<String> historico = new ArrayList<>();
+    //private List<String> historico = new ArrayList<>();
 
 
 
