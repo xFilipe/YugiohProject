@@ -94,9 +94,17 @@ public class Jogo {
         arena.setContador(arena.getContador() + 1);
     }
 
+
     // c = carta, j = id jogador, p = posicao no campo, v = virada para cima ou baixo
-    public void jogarCarta(Carta c, long j, String p, boolean v){
+    public boolean jogarCarta(Carta c, long j, String p, boolean v){
         boolean jogou; // irá impedir que mais de um monstro seja jogado.
+        boolean sucesso = false; // confirma se foi possível setar a carta.
+
+
+        // Verificar possibilidade de usar o currentPlayer, a fim de evitar a repetição do código
+
+
+        // Player One
 
         if (playerOne.getId() == j){
             if (c.getTipo() == "Monster"){
@@ -105,29 +113,66 @@ public class Jogo {
                     c.setCartaVirada(v);
                     c.setStatus(true);
                     arena.getAreaMonstro1().put(p, c);
+                    sucesso = true;
                 } else if(arena.getAreaMonstro1().containsKey(p)) {
                     c.setCartaVirada(v);
                     c.setStatus(true);
                     arena.getAreaMonstro1().replace(p, c);
+                    sucesso = true;
+                } else {
+                    c.setCartaVirada(v);
+                    c.setStatus(true);
+                    arena.getAreaMonstro1().put(p, c);
+                    sucesso = true;
                 }
 
             }else if(c.getTipo() == "Equip"){
-                // equip
-            } else {
+                if(!!arena.getAreaMonstro1().isEmpty()){
+                    // arena.getAreaMonstro1().get(p); criar lógica para equip.
+                } else {
+                    sucesso = false;
+                }
+            } else if(c.getTipo() == "Magic" || c.getTipo() == "Trap") {
                 // trap or magic
             }
-        
-        
 
         }
 
 
+        // Player Two
+        if (playerTwo.getId() == j){
+            if (c.getTipo() == "Monster"){
+                jogou = true;
+                if(arena.getAreaMonstro2().isEmpty()){
+                    c.setCartaVirada(v);
+                    c.setStatus(true);
+                    arena.getAreaMonstro2().put(p, c);
+                    sucesso = true;
+                } else if(arena.getAreaMonstro2().containsKey(p)) {
+                    c.setCartaVirada(v);
+                    c.setStatus(true);
+                    arena.getAreaMonstro2().replace(p, c);
+                    sucesso = true;
+                } else {
+                    c.setCartaVirada(v);
+                    c.setStatus(true);
+                    arena.getAreaMonstro2().put(p, c);
+                    sucesso = true;
+                }
 
+            }else if(c.getTipo() == "Equip"){
+                if(!!arena.getAreaMonstro2().isEmpty()){
+                    // arena.getAreaMonstro2().get(p); criar lógica para equip.
+                } else {
+                    sucesso = false;
+                }
+            } else if(c.getTipo() == "Magic" || c.getTipo() == "Trap") {
+                // trap or magic
+            }
+        }
 
+        return sucesso;
     }
-
-
-
 
     // Rever
     public void atacar(Carta at, Carta df){
