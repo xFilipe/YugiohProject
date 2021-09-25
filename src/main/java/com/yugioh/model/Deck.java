@@ -26,7 +26,7 @@ public class Deck extends PanacheEntityBase {
 
     private String deckNome;
 
-    private boolean deckPrincipal; // se é o Deck em uso atualmente
+    private boolean deckPrincipal = false; // se é o Deck em uso atualmente
 
     @ManyToMany
     List<Carta> deckCartas = new ArrayList<Carta>(39);
