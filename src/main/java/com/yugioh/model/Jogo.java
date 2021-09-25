@@ -49,11 +49,20 @@ public class Jogo {
         moeda.add(d2.getId());
         Collections.shuffle(moeda);
         long sorteado = moeda.get(0);
-        mudarJogador(sorteado);
 
         playerOne = d1;
-        playerTwo = d2;
+        playerOne.getDeckAtual().embaralhar();
+        for(int i = 0; i < 3; i++){
+            playerOne.getMao().add(playerOne.getDeckAtual().sacar());
+        }
 
+        playerTwo = d2;
+        playerTwo.getDeckAtual().embaralhar();
+        for(int i = 0; i < 3; i++){
+            playerTwo.getMao().add(playerTwo.getDeckAtual().sacar());
+        }
+
+        mudarJogador(sorteado);
         return duelo;
     }
 
@@ -85,15 +94,20 @@ public class Jogo {
     }
 
 
-    public void encerrar(){
+    public Duelo encerrar(){
         Duelo duelo = new Duelo();
-        //status = false;
-        if(arena.getPontoVida1() < arena.getPontoVida2()){
-             //= duelista2;
-        } else {
-            //vencedor = duelista1;
+        duelo.setStatus(false);
+
+        if(arena.getPontoVida1() == 0){
+             duelo.setVencedorId(playerOne.getId());
+        } else if (arena.getPontoVida2() == 0){
+            duelo.setVencedorId(playerTwo.getId());
         }
+
+        duelo.setHoraFim(LocalDate.now());
+        return duelo;
     }
+
 
 
 
