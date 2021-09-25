@@ -7,6 +7,7 @@ import lombok.ToString;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 
@@ -28,27 +29,30 @@ public class Jogo {
         duelo.setStatus(true);
         duelo.setHoraInicio(LocalDate.now());
         duelo.setDuelista1(d1.getId());
-        duelo.setVencedorId(0l);
         duelo.setDuelista2(d2.getId());
-        //duelo.setId(); ver
+
+        // Teste
+        Date date = new Date();
+        duelo.setId(date.getTime());
+
 
         arena.setTipoCampo("0");
         arena.setPontoVida1(8000);
         arena.setPontoVida2(8000);
+        arena.setJogador1(d1.getId());
+        arena.setJogador2(d2.getId());
 
 
         // Sortear
-        List<Long> moeda = new ArrayList<>();
+        List<Long> moeda = new ArrayList<>(1);
         moeda.add(d1.getId());
         moeda.add(d2.getId());
         Collections.shuffle(moeda);
-        long sorteado = (long) moeda.get(0);
+        long sorteado = moeda.get(0);
         mudarJogador(sorteado);
 
         playerOne = d1;
         playerTwo = d2;
-
-        playerOne.getDeckAtual().g
 
         return duelo;
     }
@@ -59,20 +63,35 @@ public class Jogo {
         } else {
             currentPlayer = playerOne;
         }
+        mudarTurno(currentPlayer.getId());
     }
 
-    public void mudarTurno(){
+    public void mudarTurno(long cp){
+        if (playerOne.getId() == cp){
+            if (playerOne.getMao().size() < 4) {
+                playerOne.getMao().add(playerOne.getDeckAtual().sacar());
+            } else {
+                arena.getCemiterio1().add(playerOne.getDeckAtual().sacar());
+            }
 
-        currentPlayer.getDeckAtual().g
+        } else if(playerTwo.getId() == cp){
+            if(playerTwo.getMao().size() < 4){
+                playerTwo.getMao().add(playerTwo.getDeckAtual().sacar());
+            } else {
+                arena.getCemiterio2().add(playerTwo.getDeckAtual().sacar());
+            }
+        }
+
     }
 
 
     public void encerrar(){
-        status = false;
+        Duelo duelo = new Duelo();
+        //status = false;
         if(arena.getPontoVida1() < arena.getPontoVida2()){
-            vencedor = duelista2;
+             //= duelista2;
         } else {
-            vencedor = duelista1;
+            //vencedor = duelista1;
         }
     }
 
