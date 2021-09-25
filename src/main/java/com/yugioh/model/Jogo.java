@@ -91,27 +91,25 @@ public class Jogo {
                 arena.getCemiterio2().add(playerTwo.getDeckAtual().sacar());
             }
         }
-
+        arena.setContador(arena.getContador() + 1);
     }
-    
-    
 
-
-    public void jogar(Carta c, long j, int p){ // p = posição desejada para colocar a carta
-        boolean jogou;
+    // c = carta, j = id jogador, p = posicao no campo, v = virada para cima ou baixo
+    public void jogarCarta(Carta c, long j, String p, boolean v){
+        boolean jogou; // irá impedir que mais de um monstro seja jogado.
 
         if (playerOne.getId() == j){
             if (c.getTipo() == "Monster"){
                 jogou = true;
-
-
-                if(jogou == false){      // validar se há espaço no campo mudar essa lógica do jogo, coloquei só para compilar.
-                    //arena.getAreaMonstro1().add(p, c);
-                    // arena.getAreaMagia1().contains(1);
-                } else {
-
+                if(arena.getAreaMonstro1().isEmpty()){
+                    c.setCartaVirada(v);
+                    c.setStatus(true);
+                    arena.getAreaMonstro1().put(p, c);
+                } else if(arena.getAreaMonstro1().containsKey(p)) {
+                    c.setCartaVirada(v);
+                    c.setStatus(true);
+                    arena.getAreaMonstro1().replace(p, c);
                 }
-
 
             }else if(c.getTipo() == "Equip"){
                 // equip

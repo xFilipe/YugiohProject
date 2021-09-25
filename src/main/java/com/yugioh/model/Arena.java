@@ -17,19 +17,21 @@ public class Arena {
 
     private String tipoCampo;
 
+    private int contador;
+
     // Player One
     private long jogador1;
     private int pontoVida1;
-    Map<Integer, Carta> areaMonstro1 = new HashMap<>(4);
-    Map<Integer, Carta> areaMagia1 = new HashMap<>(4);
+    Map<String, Carta> areaMonstro1 = new HashMap<>(4);
+    Map<String, Carta> areaMagia1 = new HashMap<>(4);
     List<Carta> cemiterio1 = new ArrayList<>(39);
 
 
     // Player Two
     private long jogador2;
     private int pontoVida2;
-    Map<Integer, Carta> areaMonstro2 = new HashMap<>(4);
-    Map<Integer, Carta> areaMagia2 = new HashMap<>(4);
+    Map<String, Carta> areaMonstro2 = new HashMap<>(4);
+    Map<String, Carta> areaMagia2 = new HashMap<>(4);
     List<Carta> cemiterio2 = new ArrayList<>(39);
 
 

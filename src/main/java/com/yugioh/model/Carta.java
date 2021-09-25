@@ -26,5 +26,6 @@ public class Carta extends PanacheEntityBase {
     private int password;
     private int preco;
     private boolean status = false; // Verifica se a carta está em jogo.
+    private boolean cartaVirada; // Verifica se a carta foi setada virada para baixo.
 
 }
